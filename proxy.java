@@ -30,7 +30,7 @@ class MySQLProxy implements Database {
 
     private int num_client_connect = 0;
 
-    Database db;
+    private Database db;
 
     MySQLProxy(Database db){
         this.db = db;
@@ -48,7 +48,7 @@ class MySQLProxy implements Database {
 }
 
 /* 虛擬代理，e.g., 加載網頁的時候，圖片的載入速度，虛擬代理會先把網頁的架構顯示，當圖片有需要的時候再載入; 這樣的做法也叫做copy-on-write */
-/* 以下例子，當使用proxy的時候，proxy沒有真的去load image，而是等真正要顯示圖片的時候才會委託真正的ImageViewer去load image */
+/* 以下例子，當使用proxy的時候，proxy會記得image的reference但沒有真的去load image，而是等真正要顯示圖片的時候才會把委託真正的ImageViewer去load image */
 
 interface ImageViewer {
     void display();
