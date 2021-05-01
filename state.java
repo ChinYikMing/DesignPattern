@@ -1,12 +1,12 @@
-abstract class State {
-    abstract void work(Work work);
+interface State {
+    void handle(Worker worker);
 }
 
-class Work {
+class Worker {
     private State mood;                   //現在的工作心情
     int time;                             //現在幾點
 
-    public Work(State mood, int time) {
+    public Worker(State mood, int time) {
         this.mood = mood;
         this.time = time;
     }
@@ -28,51 +28,52 @@ class Work {
     }
 
     void moodHandle(){
-        mood.work(this);
+        mood.handle(this);
     }
 }
 
-class MorningMood extends State {
+class MorningMood implements State {
 
     @Override
-    void work(Work work) {
-        if(work.getTime() < 12)
-            System.out.printf("時間：%d點，早上工作，一條龍\n", work.getTime());
+    public void handle(Worker worker) {
+        if(worker.getTime() < 12)
+            System.out.printf("時間：%d點，早上工作，一條龍\n", worker.getTime());
         else{
-            work.setMood(new NoonMood());
-            work.moodHandle();
+            worker.setMood(new NoonMood());
+            worker.moodHandle();
         }
     }
 }
 
-class NoonMood extends State {
+class NoonMood implements State {
 
     @Override
-    void work(Work work) {
-        if(work.getTime() >= 12 && work.getTime() < 18)
-            System.out.printf("時間：%d點，下午工作，一條蟲\n", work.getTime());
+    public void handle(Worker worker) {
+        if(worker.getTime() >= 12 && worker.getTime() < 18)
+            System.out.printf("時間：%d點，下午工作，一條蟲\n", worker.getTime());
         else {
-            work.setMood(new NightMood());
-            work.moodHandle();
+            worker.setMood(new NightMood());
+            worker.moodHandle();
         }
     }
 }
 
-class NightMood extends State {
+class NightMood implements State {
+
     @Override
-    void work(Work work) {
-        if(work.getTime() >= 18)
-            System.out.printf("時間：%d點，晚上工作，老子才不幹！\n", work.getTime());
+    public void handle(Worker worker) {
+        if(worker.getTime() >= 18)
+            System.out.printf("時間：%d點，晚上工作，老子才不幹！\n", worker.getTime());
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        int startWorkingTime = 8;
-        Work work = new Work(new MorningMood(), startWorkingTime);
-        for(int i = startWorkingTime; i < 24; ++i){
-            work.moodHandle();
-            work.setTime(work.getTime() + 1);
+        int startWorkeringTime = 8;
+        Worker worker = new Worker(new MorningMood(), startWorkeringTime);
+        for(int i = startWorkeringTime; i < 24; ++i){
+            worker.moodHandle();
+            worker.setTime(worker.getTime() + 1);
         }
     }
 }
