@@ -114,7 +114,7 @@ public class Main {
         Sticker sticker1 = bui1.getResult();
         sticker1.show();
 
-        // build sticker based on builder 1
+        // build sticker based on builder 2
         di.construct(bui2);
         Sticker sticker2 = bui2.getResult();
         sticker2.show();
