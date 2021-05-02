@@ -2,7 +2,7 @@ interface Gamer {
     void attack();
 }
 
-class Catetaker {
+class Caretaker {
     private Momemto momento;
 
     public Momemto getMomento() {
@@ -88,15 +88,15 @@ public class Main {
     public static void main(String[] args){
         AbstractGamer gamer1 = new SwordMan( "Alive");
 
-        Catetaker catetaker = new Catetaker();
-        catetaker.setMomento(gamer1.createMomemto());
+        Caretaker caretaker = new Caretaker();
+        caretaker.setMomento(gamer1.createMomemto());
 
         System.out.println("進入大魔王關卡");
         gamer1.attack();                              /* 攻擊一下就被大魔王打死了... */
         gamer1.showState();
 
         System.out.println("重新開始");
-        gamer1.setMomemto(catetaker.getMomento());    /* 回复到一開始狀態，再打一次 */
+        gamer1.setMomemto(caretaker.getMomento());    /* 回复到一開始狀態，再打一次 */
         gamer1.showState();
     }
 }
