@@ -69,7 +69,7 @@ class NightMood implements State {
 
 public class Main {
     public static void main(String[] args) {
-        int startWorkeringTime = 8;
+        int startWorkeringTime = 8; /* 早上8點上班 */
         Worker worker = new Worker(new MorningMood(), startWorkeringTime);
         for(int i = startWorkeringTime; i < 24; ++i){
             worker.moodHandle();
