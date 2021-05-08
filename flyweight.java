@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 class WebsiteFactory {
+    /* 內部狀態 */
     private final HashMap<String, Website> websiteCategory = new HashMap<>();
 
     public Website getWebsiteCategory(String key){
@@ -31,6 +32,7 @@ class ConcreteWebsite implements Website{
     }
 }
 
+/* 外部狀態（用來區分內部狀態）*/
 class User {
     private String name;
     private int id;
