@@ -1,6 +1,6 @@
 /* 安全代理, e.g.,限制連接Database的client端數量; */ 
 /* 這邊也可看成有遠端代理, e.g., database的連線可能是遠端 */
-/* 這邊也可成有智慧參考，e.g., proxy在connect的時候先去檢查目前連線數量(檢查這一動作可看作是處理另外一些事情) */
+/* 這邊也可看成有智慧參考，e.g., proxy在connect的時候先去檢查目前連線數量(檢查這一動作可看作是處理另外一些事情) */
 
 interface Database {
     void connect(Client client);
