@@ -28,6 +28,7 @@ class ConcreteDecoratorA extends Decorator {
         super(component);
     }
 
+    /* ConcreteDecoratorA 想要增加的職責 */
     private String addedState;
 
     @Override
@@ -45,6 +46,7 @@ class ConcreteDecoratorB extends Decorator {
         super(component);
     }
 
+    /* ConcreteDecoratorB 想要增加的職責 */
     private void AddedBehavior(){
         System.out.println("This is added behavior in concrete decorator B");
     }
